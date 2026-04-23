@@ -1,0 +1,21 @@
+services:
+  scraper:
+    build: .
+    image: hora-extra:latest
+    volumes:
+      - ./output:/app/output
+      - ./vagas-tech:/app/vagas-tech
+      - ./domain.yaml:/app/domain.yaml:ro
+    env_file:
+      - .env
+    command: ["scraper.py", "--save-markdown"]
+
+  analyzer:
+    build: .
+    image: hora-extra:latest
+    volumes:
+      - ./output:/app/output
+      - ./curriculos:/app/curriculos:ro
+    env_file:
+      - .env
+    command: ["analyzer.py", "curriculos/curriculo.pdf", "--provider", "groq", "--top", "10"]
