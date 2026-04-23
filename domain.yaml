@@ -776,3 +776,7 @@ domains:
   - name: anagaming
     url: https://anagaming.inhire.app/vagas
     type: inhire
+
+  - name: quintoandar
+    url: https://job-boards.greenhouse.io/quintoandar
+    type: greenhouse
