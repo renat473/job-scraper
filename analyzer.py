@@ -47,6 +47,12 @@ class JobFile:
     company: str
     title: str
     content: str
+    location: str = ""
+
+
+def _parse_location(content: str) -> str:
+    match = re.search(r"\*\*Localização:\*\*\s*(.+)", content)
+    return match.group(1).strip() if match else ""
 
 
 def load_jobs(output_dir: str = "output") -> list[JobFile]:
@@ -55,8 +61,26 @@ def load_jobs(output_dir: str = "output") -> list[JobFile]:
         content = md_file.read_text(encoding="utf-8")
         company = md_file.parent.name
         title = md_file.stem.replace("_", " ")
-        jobs.append(JobFile(path=md_file, company=company, title=title, content=content))
+        location = _parse_location(content)
+        jobs.append(JobFile(path=md_file, company=company, title=title, content=content, location=location))
     return jobs
+
+
+# ---------------------------------------------------------------------------
+# Filtros de pré-seleção (antes da IA)
+# ---------------------------------------------------------------------------
+
+WORK_TYPE_KEYWORDS: dict[str, list[str]] = {
+    "remoto":     ["remote", "remoto"],
+    "hibrido":    ["hybrid", "híbrido", "hibrido"],
+    "presencial": ["on-site", "on site", "presencial"],
+}
+
+
+def _filter_by_work_type(jobs: list[JobFile], work_type: str) -> list[JobFile]:
+    keywords = WORK_TYPE_KEYWORDS.get(work_type.lower(), [work_type.lower()])
+    pattern = re.compile("|".join(re.escape(kw) for kw in keywords), re.IGNORECASE)
+    return [j for j in jobs if pattern.search(j.location) or pattern.search(j.title)]
 
 
 # ---------------------------------------------------------------------------
@@ -212,6 +236,7 @@ def analyze(
     delay: float = 0.5,
     max_consecutive_errors: int = 3,
     keywords: list[str] | None = None,
+    work_type: str | None = None,
 ) -> list[ScoredJob]:
     resume = extract_pdf_text(resume_path)
     jobs = load_jobs(output_dir)
@@ -220,10 +245,20 @@ def analyze(
         print(f"[WARN] Nenhuma vaga encontrada em '{output_dir}'")
         return []
 
-    if keywords:
-        jobs = _filter_jobs(jobs, keywords)
+    if work_type:
+        before = len(jobs)
+        jobs = _filter_by_work_type(jobs, work_type)
+        print(f"[INFO] Filtro de modalidade '{work_type}': {len(jobs)} vaga(s) de {before}")
         if not jobs:
-            print(f"[WARN] Nenhuma vaga encontrada com o filtro: {', '.join(keywords)}")
+            print(f"[WARN] Nenhuma vaga encontrada com modalidade '{work_type}'")
+            return []
+
+    if keywords:
+        before = len(jobs)
+        jobs = _filter_jobs(jobs, keywords)
+        print(f"[INFO] Filtro de cargo {keywords}: {len(jobs)} vaga(s) de {before}")
+        if not jobs:
+            print(f"[WARN] Nenhuma vaga encontrada com os termos: {', '.join(keywords)}")
             return []
 
     scorer = PROVIDERS[provider]
@@ -231,8 +266,6 @@ def analyze(
 
     print(f"[INFO] Provider: {provider} | Modelo: {effective_model}")
     print(f"[INFO] Currículo: {resume_path}")
-    if keywords:
-        print(f"[INFO] Filtro de título: {', '.join(keywords)}")
     print(f"[INFO] Vagas a analisar: {len(jobs)}")
     print()
 
@@ -286,6 +319,8 @@ def print_results(results: list[ScoredJob], show_details: bool = True) -> None:
         bar = "█" * (r.score // 5) + "░" * (20 - r.score // 5)
         print(f"  #{rank:>2}  [{bar}] {r.score:>3}/100")
         print(f"       {r.job.company} — {r.job.title}")
+        if r.job.location:
+            print(f"       📍 {r.job.location}")
         print(f"       {r.job.path}")
         if r.summary:
             print(f"       {r.summary}")
@@ -311,6 +346,7 @@ def save_json(results: list[ScoredJob], path: str) -> None:
             "score": r.score,
             "company": r.job.company,
             "title": r.job.title,
+            "location": r.job.location,
             "path": str(r.job.path),
             "summary": r.summary,
             "matches": r.matches,
@@ -374,7 +410,13 @@ if __name__ == "__main__":
         "--filter", "-f",
         nargs="+",
         metavar="KEYWORD",
-        help="Filtrar vagas pelo título (ex: --filter DevOps SRE 'Tech Lead')",
+        help="Filtrar vagas pelo cargo/título (ex: --filter DevOps SRE 'Tech Lead')",
+    )
+    parser.add_argument(
+        "--work-type", "-w",
+        choices=["remoto", "hibrido", "presencial"],
+        metavar="MODALIDADE",
+        help="Filtrar por modalidade de trabalho: remoto, hibrido ou presencial",
     )
     args = parser.parse_args()
 
@@ -387,6 +429,7 @@ if __name__ == "__main__":
         min_score=args.min_score,
         delay=args.delay,
         keywords=args.filter,
+        work_type=args.work_type,
     )
 
     print_results(results, show_details=not args.no_details)
