@@ -1,5 +1,6 @@
 import json
 import re
+import unicodedata
 import yaml
 import requests
 from bs4 import BeautifulSoup
@@ -138,6 +139,13 @@ def _fetch_description(url: str, session: requests.Session) -> str:
         return "\n".join(lines)
     except Exception as e:
         return f"[Erro ao carregar descrição: {e}]"
+
+
+def _to_slug(text: str) -> str:
+    text = unicodedata.normalize("NFKD", text).encode("ascii", "ignore").decode("ascii")
+    text = text.lower()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
 
 
 def _html_to_text(html: str) -> str:
@@ -368,7 +376,6 @@ def scrape_inhire(domain: dict, fetch_description: bool = True) -> list[Job]:
     for posting in postings:
         title = posting.get("displayName", "").strip()
         job_id = posting.get("jobId", "")
-        job_url = posting.get("link") or f"{url}/{job_id}"
 
         if not title or not job_id:
             continue
@@ -397,6 +404,58 @@ def scrape_inhire(domain: dict, fetch_description: bool = True) -> list[Job]:
                 description = f"[Erro ao carregar descrição: {e}]"
             time.sleep(0.5)
 
+        base = url.rstrip("/")
+        job_url = f"{base}/{job_id}/{_to_slug(title)}"
+
+        jobs.append(Job(
+            title=title,
+            location=location,
+            department=department,
+            url=job_url,
+            company=company,
+            description=description,
+        ))
+
+    return jobs
+
+
+def scrape_greenhouse(domain: dict, fetch_description: bool = True) -> list[Job]:
+    url = domain["url"]
+    company = domain["name"]
+    # extrai o slug da empresa da URL (ex: quintoandar de .../quintoandar)
+    slug = url.rstrip("/").split("/")[-1]
+
+    api_base = "https://boards-api.greenhouse.io/v1/boards"
+    jobs = []
+
+    session = requests.Session()
+    r = session.get(f"{api_base}/{slug}/jobs", timeout=15)
+    r.raise_for_status()
+    data = r.json()
+
+    for posting in data.get("jobs", []):
+        title = posting.get("title", "").strip()
+        if not title:
+            continue
+
+        job_id = posting.get("id")
+        job_url = posting.get("absolute_url", "")
+        location = posting.get("location", {}).get("name", "")
+        departments = posting.get("departments", [])
+        department = departments[0].get("name", "") if departments else ""
+
+        description = ""
+        if fetch_description and job_id:
+            print(f"  [→] Carregando descrição: {title}")
+            try:
+                r2 = session.get(f"{api_base}/{slug}/jobs/{job_id}", timeout=15)
+                r2.raise_for_status()
+                detail = r2.json()
+                description = _html_to_text(detail.get("content", ""))
+            except Exception as e:
+                description = f"[Erro ao carregar descrição: {e}]"
+            time.sleep(0.5)
+
         jobs.append(Job(
             title=title,
             location=location,
@@ -414,6 +473,7 @@ SCRAPERS = {
     "ashbyhq": scrape_ashbyhq,
     "lever": scrape_lever,
     "inhire": scrape_inhire,
+    "greenhouse": scrape_greenhouse,
 }
 
 
