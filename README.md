@@ -8,8 +8,14 @@ Inclui também um analisador de currículo que compara um PDF com as vagas colet
 
 ## Requisitos
 
+**Com pip:**
 ```bash
-pip install beautifulsoup4 requests pyyaml pdfplumber python-dotenv openai groq google-generativeai
+pip install -r requirements.txt
+```
+
+**Com Docker (sem instalar nada localmente):**
+```bash
+docker compose run --rm scraper
 ```
 
 ---
@@ -18,11 +24,18 @@ pip install beautifulsoup4 requests pyyaml pdfplumber python-dotenv openai groq 
 
 ```
 hora-extra/
-├── scraper.py      # Coleta vagas e salva em markdown
-├── analyzer.py     # Analisa currículo e ranqueia vagas por score
-├── domain.yaml     # Lista de domínios/empresas
-├── .env            # Chaves de API (não versionar)
-└── output/         # Arquivos markdown gerados (criado automaticamente)
+├── scraper.py                    # Coleta vagas e salva em markdown
+├── analyzer.py                   # Analisa currículo e ranqueia vagas por score
+├── domain.yaml                   # Lista de domínios/empresas
+├── requirements.txt              # Dependências Python
+├── Dockerfile                    # Imagem da aplicação
+├── docker-compose.yml            # Orquestração dos serviços
+├── .env                          # Chaves de API (não versionar)
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                # Pipeline de CI (lint + build)
+│       └── cd.yml                # Pipeline de CD (push de imagem + scraper agendado)
+└── output/                       # Arquivos markdown gerados (criado automaticamente)
 ```
 
 ---
@@ -65,12 +78,13 @@ domains:
 
 ### Tipos de ATS suportados (`type`)
 
-| Valor      | Plataforma   | Exemplo de URL                          |
-|------------|--------------|-----------------------------------------|
-| `rippling` | Rippling ATS | `https://ats.rippling.com/empresa/jobs` |
-| `ashbyhq`  | Ashby        | `https://jobs.ashbyhq.com/empresa`      |
-| `lever`    | Lever        | `https://jobs.lever.co/empresa`         |
-| `inhire`   | InHire       | `https://empresa.inhire.app/vagas`      |
+| Valor        | Plataforma   | Exemplo de URL                                  |
+|--------------|--------------|-------------------------------------------------|
+| `rippling`   | Rippling ATS | `https://ats.rippling.com/empresa/jobs`         |
+| `ashbyhq`   | Ashby        | `https://jobs.ashbyhq.com/empresa`              |
+| `lever`      | Lever        | `https://jobs.lever.co/empresa`                 |
+| `inhire`     | InHire       | `https://empresa.inhire.app/vagas`              |
+| `greenhouse` | Greenhouse   | `https://job-boards.greenhouse.io/empresa`      |
 
 ### Filtro por área (`job_area`)
 
@@ -151,6 +165,18 @@ Lê um currículo em PDF, compara com todas as vagas em `output/` usando IA e ge
 # Básico (usa Groq por padrão)
 python analyzer.py meu_curriculo.pdf
 
+# Filtrar por modalidade — só vagas remotas
+python analyzer.py meu_curriculo.pdf --work-type remoto
+python analyzer.py meu_curriculo.pdf -w hibrido
+python analyzer.py meu_curriculo.pdf -w presencial
+
+# Filtrar por cargo/título — só vagas que contenham os termos
+python analyzer.py meu_curriculo.pdf --filter DevOps SRE
+python analyzer.py meu_curriculo.pdf -f 'Tech Lead' Backend
+
+# Combinar filtros (economiza tokens: só analisa o que importa)
+python analyzer.py meu_curriculo.pdf -w remoto -f Backend Python
+
 # Escolher provider e modelo
 python analyzer.py meu_curriculo.pdf --provider openai
 python analyzer.py meu_curriculo.pdf --provider openai --model gpt-4o
@@ -167,9 +193,6 @@ python analyzer.py meu_curriculo.pdf --save-json resultado.json
 # Exibir apenas score e título (sem detalhes)
 python analyzer.py meu_curriculo.pdf --no-details
 
-# Diretório de vagas customizado
-python analyzer.py meu_curriculo.pdf --output-dir output/
-
 # Delay entre requisições (útil para evitar rate limit)
 python analyzer.py meu_curriculo.pdf --delay 1.0
 ```
@@ -181,11 +204,15 @@ python analyzer.py meu_curriculo.pdf --delay 1.0
 | `--provider` | `-p` | `groq` | Provider de IA |
 | `--model` | `-m` | _(por provider)_ | Modelo a usar |
 | `--output-dir` | `-o` | `output` | Diretório com as vagas |
+| `--work-type` | `-w` | — | Modalidade: `remoto`, `hibrido` ou `presencial` |
+| `--filter` | `-f` | — | Filtrar vagas pelo cargo/título (múltiplos termos) |
 | `--top` | `-n` | `10` | Quantas vagas exibir |
 | `--min-score` | | `0` | Score mínimo para incluir |
 | `--no-details` | | — | Só score e título |
 | `--save-json` | | — | Salvar resultado em JSON |
 | `--delay` | | `0.5` | Delay entre requisições (segundos) |
+
+> Os filtros `--work-type` e `--filter` são aplicados **antes** de chamar a IA — quanto mais específico o filtro, menos tokens são consumidos.
 
 ### Exemplo de saída
 
@@ -202,6 +229,80 @@ python analyzer.py meu_curriculo.pdf --delay 1.0
          • Inglês intermediário não mencionado
          • Sem experiência explícita com Chaos Engineering
 ```
+
+---
+
+## Docker
+
+### Variáveis de ambiente
+
+Crie um arquivo `.env` na raiz (veja a seção [Configuração — .env](#configuração--env)).
+
+### Executar o scraper
+
+```bash
+# Coletar todas as vagas e salvar em output/
+docker compose run --rm scraper
+
+# Sobrescrever o comando padrão
+docker compose run --rm scraper python scraper.py --domain kto --save-markdown
+```
+
+### Executar o analyzer
+
+Coloque o currículo em PDF em `./curriculos/curriculo.pdf` e rode:
+
+```bash
+docker compose run --rm analyzer
+
+# Trocar provider ou modelo
+docker compose run --rm analyzer python analyzer.py curriculos/curriculo.pdf --provider openai --top 5
+```
+
+### Build manual da imagem
+
+```bash
+docker build -t hora-extra .
+docker run --rm --env-file .env -v $(pwd)/output:/app/output hora-extra scraper.py --save-markdown
+```
+
+---
+
+## CI/CD — GitHub Actions
+
+### CI (`ci.yml`) — acionado em push e pull requests
+
+| Etapa | O que faz |
+|-------|-----------|
+| **Lint** | Verifica o código com `ruff` |
+| **Build** | Constrói a imagem Docker (sem push) |
+
+### CD (`cd.yml`) — acionado em push para `main`/`master` e tags `v*`
+
+| Etapa | O que faz |
+|-------|-----------|
+| **Publish** | Publica a imagem no **GitHub Container Registry** (`ghcr.io`) |
+| **Scrape** | Executa o scraper e sobe o `output/` como artifact por 7 dias |
+
+### Secrets necessários no repositório
+
+Acesse **Settings → Secrets and variables → Actions** e adicione:
+
+| Secret | Obrigatório para |
+|--------|-----------------|
+| `OPENAI_API_KEY` | Provider `openai` |
+| `GROQ_API_KEY` | Provider `groq` |
+| `GEMINI_API_KEY` | Provider `gemini` |
+
+> O `GITHUB_TOKEN` é gerado automaticamente pelo GitHub — não precisa configurar.
+
+### Tags de imagem geradas automaticamente
+
+| Evento | Tag |
+|--------|-----|
+| Push em `main` | `ghcr.io/<usuario>/<repo>:main` |
+| Tag `v1.2.3` | `ghcr.io/<usuario>/<repo>:1.2.3` e `:1.2` |
+| Qualquer push | `ghcr.io/<usuario>/<repo>:sha-<hash>` |
 
 ---
 
