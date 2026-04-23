@@ -1,0 +1,36 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Project outputs (gerados em runtime via volume)
+output/
+vagas-tech/
+*.json
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# CI
+.github/
+
+# Docs
+README.md
