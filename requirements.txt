@@ -1,0 +1,14 @@
+# Web scraping
+requests
+beautifulsoup4
+
+# Config
+pyyaml
+python-dotenv
+
+# PDF parsing (instale ao menos uma)
+pdfplumber
+pypdf
+
+# AI
+openai
