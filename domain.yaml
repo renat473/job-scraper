@@ -1,0 +1,778 @@
+domains:
+
+  - name: Skeelo
+    url: https://ats.rippling.com/pt-BR/skeelo/jobs
+    type: rippling
+
+  - name: Deel
+    url: https://jobs.ashbyhq.com/Deel
+    type: ashbyhq
+
+  - name: terac
+    url: https://jobs.ashbyhq.com/terac
+    type: ashbyhq
+
+  - name: connecthum
+    url: https://jobs.ashbyhq.com/connecthum
+    type: ashbyhq
+
+  - name: seifoundation
+    url: https://jobs.ashbyhq.com/seifoundation/
+    type: ashbyhq
+
+  - name: oscilar
+    url: https://jobs.ashbyhq.com/oscilar
+    type: ashbyhq
+
+  - name: appen
+    url: https://jobs.lever.co/appen
+    type: lever
+
+  - name: trust-wallet
+    url: https://jobs.ashbyhq.com/trust-wallet
+    type: ashbyhq
+
+  - name: SKELAR
+    url: https://jobs.ashbyhq.com/SKELAR
+    type: ashbyhq
+
+  - name: kto
+    url: https://jobs.eu.lever.co/kto
+    type: lever
+    job_area: tech
+
+  - name: tractian
+    url: https://jobs.lever.co/tractian
+    type: lever
+
+  - name: cloudinary
+    url: https://jobs.lever.co/cloudinary
+    type: lever
+
+  - name: binance
+    url: https://jobs.lever.co/binance
+    type: lever
+
+  - name: ciandt
+    url: https://jobs.lever.co/ciandt
+    type: lever
+
+  - name: sophos
+    url: https://jobs.lever.co/sophos
+    type: lever
+
+  - name: teclat
+    url: https://teclat.inhire.app/vagas
+    type: inhire
+
+  - name: digix
+    url: https://digix.inhire.app/vagas
+    type: inhire
+
+  - name: nomadglobal
+    url: https://nomadglobal.inhire.app/vagas
+    type: inhire
+
+  - name: livemode
+    url: https://livemode.inhire.app/vagas
+    type: inhire
+
+  - name: chatguru
+    url: https://chatguru.inhire.app/vagas
+    type: inhire
+
+  - name: bankme
+    url: https://bankme.inhire.app/vagas
+    type: inhire
+
+  - name: infotecbrasil
+    url: https://infotecbrasil.inhire.app/vagas
+    type: inhire
+
+  - name: v4company-matriz
+    url: https://v4company.inhire.app/matriz/vagas
+    type: inhire
+
+  - name: v4company-franquias
+    url: https://v4company.inhire.app/vagas
+    type: inhire
+
+  - name: lastlink
+    url: https://lastlink.inhire.app/vagas
+    type: inhire
+
+  - name: alun
+    url: https://alun.inhire.app/vagas
+    type: inhire
+
+  - name: vhsys
+    url: https://vhsys.inhire.app/vagas
+    type: inhire
+
+  - name: auvotecnologia
+    url: https://auvotecnologia.inhire.app/vagas
+    type: inhire
+
+  - name: paytrack
+    url: https://paytrack.inhire.app/vagas
+    type: inhire
+
+  - name: bionexo
+    url: https://bionexo.inhire.app/vagas
+    type: inhire
+
+  - name: qive
+    url: https://qive.inhire.app/vagas
+    type: inhire
+
+  - name: kiwify
+    url: https://kiwify.inhire.app/vagas
+    type: inhire
+
+  - name: magazord
+    url: https://magazord.inhire.app/vagas
+    type: inhire
+
+  - name: hand
+    url: https://hand.inhire.app/vagas
+    type: inhire
+
+  - name: milvus
+    url: https://milvus.inhire.app/vagas
+    type: inhire
+
+  - name: jeitto
+    url: https://jeitto.inhire.app/vagas
+    type: inhire
+
+  - name: sharepeoplehub
+    url: https://sharepeoplehub.inhire.app/vagas
+    type: inhire
+
+  - name: advbox
+    url: https://advbox.inhire.app/vagas
+    type: inhire
+
+  - name: v360
+    url: https://v360.inhire.app/vagas
+    type: inhire
+
+  - name: contaazul
+    url: https://contaazul.inhire.app/vagas
+    type: inhire
+
+  - name: brivia
+    url: https://brivia.inhire.app/vagas
+    type: inhire
+
+  - name: sympla
+    url: https://sympla.inhire.app/vagas
+    type: inhire
+
+  - name: gex
+    url: https://gex.inhire.app/vagas
+    type: inhire
+
+  - name: jump
+    url: https://jump.inhire.app/vagas
+    type: inhire
+
+  - name: dtidigital
+    url: https://dtidigital.inhire.app/vagas
+    type: inhire
+
+  - name: contabilizei
+    url: https://contabilizei.inhire.app/vagas
+    type: inhire
+
+  - name: iconit
+    url: https://iconit.inhire.app/vagas
+    type: inhire
+
+  - name: appmax
+    url: https://appmax.inhire.app/vagas
+    type: inhire
+
+  - name: platformbuilders
+    url: https://platformbuilders.inhire.app/vagas
+    type: inhire
+
+  - name: idg
+    url: https://idg.inhire.app/vagas
+    type: inhire
+
+  - name: insiderstore
+    url: https://insiderstore.inhire.app/vagas
+    type: inhire
+
+  - name: nts
+    url: https://nts.inhire.app/vagas
+    type: inhire
+
+  - name: talentt
+    url: https://talentt.inhire.app/vagas
+    type: inhire
+
+  - name: betaonline
+    url: https://betaonline.inhire.app/vagas
+    type: inhire
+
+  - name: extremegroup
+    url: https://extremegroup.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: intera
+    url: https://intera.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: via
+    url: https://via.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: skyone
+    url: https://skyone.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: brasilparalelo
+    url: https://brasilparalelo.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: radix
+    url: https://radix.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: vitru
+    url: https://vitru.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: sanar
+    url: https://sanar.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: neoway
+    url: https://neoway.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: auvotecnologia
+    url: https://auvotecnologia.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: elogroup
+    url: https://elogroup.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: trinnus
+    url: https://trinnus.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: magazineluiza
+    url: https://magazineluiza.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: sallve
+    url: https://sallve.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: amcom
+    url: https://amcom.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: fretadao
+    url: https://fretadao.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: wavin
+    url: https://wavin.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: oceanpact
+    url: https://oceanpact.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: superlogica
+    url: https://superlogica.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: seazone
+    url: https://seazone.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: santosbrasil
+    url: https://santosbrasil.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: essencialnutricao
+    url: https://essencialnutricao.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: pedraagroindustrial
+    url: https://pedraagroindustrial.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: alice
+    url: https://alice.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: fgempreendimentos
+    url: https://fgempreendimentos.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: checkuplaboratorio
+    url: https://checkuplaboratorio.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: aliseo
+    url: https://aliseo.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: indicium
+    url: https://indicium.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: grupoprotege
+    url: https://grupoprotege.inhire.app/beyond/vagas
+    type: inhire
+
+  - name: a-players
+    url: https://a-players.inhire.app/vagas
+    type: inhire
+
+  - name: abzservicos
+    url: https://abzservicos.inhire.app/vagas
+    type: inhire
+
+  - name: vempraaccesstage
+    url: https://vempraaccesstage.inhire.app/negocieonline/vagas
+    type: inhire
+
+  - name: agrosearch
+    url: https://agrosearch.inhire.app/vagas
+    type: inhire
+
+  - name: agrotools
+    url: https://agrotools.inhire.app/vagas
+    type: inhire
+
+  - name: alliage
+    url: https://alliage.inhire.app/vagas
+    type: inhire
+
+  - name: wavin
+    url: https://wavin.inhire.app/vagas
+    type: inhire
+
+  - name: amcom
+    url: https://amcom.inhire.app/vagas
+    type: inhire
+
+  - name: amicci
+    url: https://amicci.inhire.app/vagas
+    type: inhire
+
+  - name: andrademaia
+    url: https://andrademaia.inhire.app/vagas
+    type: inhire
+
+  - name: asa
+    url: https://asa.inhire.app/vagas
+    type: inhire
+
+  - name: asper
+    url: https://asper.inhire.app/vagas
+    type: inhire
+
+  - name: autoglass
+    url: https://autoglass.inhire.app/vagas
+    type: inhire
+
+  - name: avivatec
+    url: https://avivatec.inhire.app/vagas
+    type: inhire
+
+  - name: azos
+    url: https://azos.inhire.app/vagas
+    type: inhire
+
+  - name: bancotoyota
+    url: https://bancotoyota.inhire.app/vagas
+    type: inhire
+
+  - name: bigdata
+    url: https://bigdata.inhire.app/vagas
+    type: inhire
+
+  - name: bilheteriadigital
+    url: https://bilheteriadigital.inhire.app/vagas
+    type: inhire
+
+  - name: bionexo
+    url: https://bionexo.inhire.app/latam/vagas
+    type: inhire
+
+  - name: bioxxi
+    url: https://bioxxi.inhire.app/vagas
+    type: inhire
+
+  - name: brmediagroup
+    url: https://brmediagroup.inhire.app/brmediagroup/vagas
+    type: inhire
+
+  - name: bradesco
+    url: https://bradesco.inhire.app/vagas
+    type: inhire
+
+  - name: brasilparalelo
+    url: https://brasilparalelo.inhire.app/vagas
+    type: inhire
+
+  - name: bridgeholding
+    url: https://bridgeholding.inhire.app/vagas
+    type: inhire
+
+  - name: cardapioweb
+    url: https://cardapioweb.inhire.app/vagas
+    type: inhire
+
+  - name: cerc
+    url: https://cerc.inhire.app/vagas
+    type: inhire
+
+  - name: coaktion
+    url: https://coaktion.inhire.app/vagas
+    type: inhire
+
+  - name: controlf5
+    url: https://controlf5.inhire.app/vagas
+    type: inhire
+
+  - name: banni
+    url: https://banni.inhire.app/conveste/vagas
+    type: inhire
+
+  - name: conxconstrutora
+    url: https://conxconstrutora.inhire.app/vagas
+    type: inhire
+
+  - name: csudigital
+    url: https://csudigital.inhire.app/vagas
+    type: inhire
+
+  - name: cubos
+    url: https://cubos.inhire.app/vagas
+    type: inhire
+
+  - name: dattos
+    url: https://dattos.inhire.app/vagas
+    type: inhire
+
+  - name: deepesg
+    url: https://deepesg.inhire.app/vagas
+    type: inhire
+
+  - name: dnaconnect
+    url: https://dnaconnect.inhire.app/dna-talent-basic/vagas
+    type: inhire
+
+  - name: grupomedeiros
+    url: https://grupomedeiros.inhire.app/dunloc/vagas
+    type: inhire
+
+  - name: extremegroup
+    url: https://extremegroup.inhire.app/vagas
+    type: inhire
+
+  - name: educbank
+    url: https://educbank.inhire.app/educbank/vagas
+    type: inhire
+
+  - name: eiti
+    url: https://eiti.inhire.app/vagas
+    type: inhire
+
+  - name: objective
+    url: https://objective.inhire.app/eleflow/vagas
+    type: inhire
+
+  - name: elevahub
+    url: https://elevahub.inhire.app/vagas
+    type: inhire
+
+  - name: essencialnutricao
+    url: https://essencialnutricao.inhire.app/vagas
+    type: inhire
+
+  - name: exa
+    url: https://exa.inhire.app/vagas
+    type: inhire
+
+  - name: excelsiorseguros
+    url: https://excelsiorseguros.inhire.app/vagas
+    type: inhire
+
+  - name: facitsolucoes
+    url: https://facitsolucoes.inhire.app/vagas
+    type: inhire
+
+  - name: finallevel
+    url: https://finallevel.inhire.app/vagas
+    type: inhire
+
+  - name: frameworkdigital
+    url: https://frameworkdigital.inhire.app/vagas
+    type: inhire
+
+  - name: fusionconsultoria
+    url: https://fusionconsultoria.inhire.app/vagas
+    type: inhire
+
+  - name: grupocolina
+    url: https://grupocolina.inhire.app/vagas
+    type: inhire
+
+  - name: grupolos
+    url: https://grupolos.inhire.app/vagas
+    type: inhire
+
+  - name: toroinvestimentos
+    url: https://toroinvestimentos.inhire.app/grupotoro/vagas
+    type: inhire
+
+  - name: gx2
+    url: https://gx2.inhire.app/vagas
+    type: inhire
+
+  - name: happyhouse
+    url: https://happyhouse.inhire.app/vagas
+    type: inhire
+
+  - name: housi
+    url: https://housi.inhire.app/vagas
+    type: inhire
+
+  - name: icherry
+    url: https://icherry.inhire.app/vagas
+    type: inhire
+
+  - name: idwall
+    url: https://idwall.inhire.app/vagas
+    type: inhire
+
+  - name: raiadrogasil
+    url: https://raiadrogasil.inhire.app/vagas
+    type: inhire
+
+  - name: 3cplusnow
+    url: https://3cplusnow.inhire.app/instituto3c/vagas
+    type: inhire
+
+  - name: frete
+    url: https://frete.inhire.app/intersite/vagas
+    type: inhire
+
+  - name: ipnet
+    url: https://ipnet.inhire.app/vagas
+    type: inhire
+
+  - name: itriad
+    url: https://itriad.inhire.app/vagas
+    type: inhire
+
+  - name: itsgroup
+    url: https://itsgroup.inhire.app/vagas
+    type: inhire
+
+  - name: kamino
+    url: https://kamino.inhire.app/vagas
+    type: inhire
+
+  - name: keyworks
+    url: https://keyworks.inhire.app/vagas
+    type: inhire
+
+  - name: klavi
+    url: https://klavi.inhire.app/vagas
+    type: inhire
+
+  - name: lampp-it
+    url: https://lampp-it.inhire.app/vagas
+    type: inhire
+
+  - name: lemonenergia
+    url: https://lemonenergia.inhire.app/vagas
+    type: inhire
+
+  - name: liber
+    url: https://liber.inhire.app/vagas
+    type: inhire
+
+  - name: lighthouseit
+    url: https://lighthouseit.inhire.app/vagas
+    type: inhire
+
+  - name: listo
+    url: https://listo.inhire.app/vagas
+    type: inhire
+
+  - name: luby
+    url: https://luby.inhire.app/vagas
+    type: inhire
+
+  - name: olist
+    url: https://olist.inhire.app/vagas
+    type: inhire
+
+  - name: mazzatech
+    url: https://mazzatech.inhire.app/vagas
+    type: inhire
+
+  - name: midhaus
+    url: https://midhaus.inhire.app/vagas
+    type: inhire
+
+  - name: monkey
+    url: https://monkey.inhire.app/vagas
+    type: inhire
+
+  - name: montebravo
+    url: https://montebravo.inhire.app/vagas
+    type: inhire
+
+  - name: mottu
+    url: https://mottu.inhire.app/vagas
+    type: inhire
+
+  - name: movecta
+    url: https://movecta.inhire.app/vagas
+    type: inhire
+
+  - name: neoway
+    url: https://neoway.inhire.app/vagas
+    type: inhire
+
+  - name: paytcall
+    url: https://paytcall.inhire.app/vagas
+    type: inhire
+
+  - name: pedraagroindustrial
+    url: https://pedraagroindustrial.inhire.app/vagas
+    type: inhire
+
+  - name: peopleoriented
+    url: https://peopleoriented.inhire.app/vagas
+    type: inhire
+
+  - name: praso
+    url: https://praso.inhire.app/vagas
+    type: inhire
+
+  - name: prevtech
+    url: https://prevtech.inhire.app/vagas
+    type: inhire
+
+  - name: programmers
+    url: https://programmers.inhire.app/vagas
+    type: inhire
+
+  - name: prospertechtalents
+    url: https://prospertechtalents.inhire.app/vagas
+    type: inhire
+
+  - name: residclub
+    url: https://residclub.inhire.app/vagas
+    type: inhire
+
+  - name: safegroup
+    url: https://safegroup.inhire.app/vagas
+    type: inhire
+
+  - name: same-engenharia
+    url: https://same-engenharia.inhire.app/vagas
+    type: inhire
+
+  - name: sanar
+    url: https://sanar.inhire.app/vagas
+    type: inhire
+
+  - name: segurossura
+    url: https://segurossura.inhire.app/vagas
+    type: inhire
+
+  - name: shapedigital
+    url: https://shapedigital.inhire.app/vagas
+    type: inhire
+
+  - name: silicon
+    url: https://silicon.inhire.app/vagas
+    type: inhire
+
+  - name: solfacil
+    url: https://solfacil.inhire.app/vagas
+    type: inhire
+
+  - name: solutis
+    url: https://solutis.inhire.app/vagas
+    type: inhire
+
+  - name: grupomedeiros
+    url: https://grupomedeiros.inhire.app/supergiro/vagas
+    type: inhire
+
+  - name: superlogica
+    url: https://superlogica.inhire.app/vagas
+    type: inhire
+
+  - name: grupotaking
+    url: https://grupotaking.inhire.app/vagas
+    type: inhire
+
+  - name: talentx
+    url: https://talentx.inhire.app/vagas
+    type: inhire
+
+  - name: techlead
+    url: https://techlead.inhire.app/vagas
+    type: inhire
+
+  - name: toroinvestimentos
+    url: https://toroinvestimentos.inhire.app/vagas
+    type: inhire
+
+  - name: vixtra
+    url: https://vixtra.inhire.app/vagas
+    type: inhire
+
+  - name: votorantim
+    url: https://votorantim.inhire.app/vagas
+    type: inhire
+
+  - name: warren
+    url: https://warren.inhire.app/vagas
+    type: inhire
+
+  - name: weme
+    url: https://weme.inhire.app/vagas
+    type: inhire
+
+  - name: winnin
+    url: https://winnin.inhire.app/vagas
+    type: inhire
+
+  - name: wsut
+    url: https://wsut.inhire.app/vagas
+    type: inhire
+
+  - name: yandeh
+    url: https://yandeh.inhire.app/vagas
+    type: inhire
+
+  - name: zallpy
+    url: https://zallpy.inhire.app/vagas
+    type: inhire
+
+  - name: zig
+    url: https://zig.inhire.app/vagas
+    type: inhire
+
+  - name: anagaming
+    url: https://anagaming.inhire.app/vagas
+    type: inhire
