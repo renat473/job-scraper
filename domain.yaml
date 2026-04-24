@@ -47,7 +47,6 @@ domains:
   - name: kto
     url: https://jobs.eu.lever.co/kto
     type: lever
-    job_area: tech
 
   - name: tractian
     url: https://jobs.lever.co/tractian
@@ -125,16 +124,8 @@ domains:
     url: https://vhsys.inhire.app/vagas
     type: inhire
 
-  - name: auvotecnologia
-    url: https://auvotecnologia.inhire.app/vagas
-    type: inhire
-
   - name: paytrack
     url: https://paytrack.inhire.app/vagas
-    type: inhire
-
-  - name: bionexo
-    url: https://bionexo.inhire.app/vagas
     type: inhire
 
   - name: qive
@@ -233,10 +224,6 @@ domains:
     url: https://betaonline.inhire.app/vagas
     type: inhire
 
-  - name: extremegroup
-    url: https://extremegroup.inhire.app/beyond/vagas
-    type: inhire
-
   - name: intera
     url: https://intera.inhire.app/beyond/vagas
     type: inhire
@@ -247,30 +234,6 @@ domains:
 
   - name: skyone
     url: https://skyone.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: brasilparalelo
-    url: https://brasilparalelo.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: radix
-    url: https://radix.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: vitru
-    url: https://vitru.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: sanar
-    url: https://sanar.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: neoway
-    url: https://neoway.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: auvotecnologia
-    url: https://auvotecnologia.inhire.app/beyond/vagas
     type: inhire
 
   - name: elogroup
@@ -289,56 +252,16 @@ domains:
     url: https://sallve.inhire.app/beyond/vagas
     type: inhire
 
-  - name: amcom
-    url: https://amcom.inhire.app/beyond/vagas
-    type: inhire
-
   - name: fretadao
     url: https://fretadao.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: wavin
-    url: https://wavin.inhire.app/beyond/vagas
     type: inhire
 
   - name: oceanpact
     url: https://oceanpact.inhire.app/beyond/vagas
     type: inhire
 
-  - name: superlogica
-    url: https://superlogica.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: seazone
-    url: https://seazone.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: santosbrasil
-    url: https://santosbrasil.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: essencialnutricao
-    url: https://essencialnutricao.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: pedraagroindustrial
-    url: https://pedraagroindustrial.inhire.app/beyond/vagas
-    type: inhire
-
   - name: alice
     url: https://alice.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: fgempreendimentos
-    url: https://fgempreendimentos.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: checkuplaboratorio
-    url: https://checkuplaboratorio.inhire.app/beyond/vagas
-    type: inhire
-
-  - name: aliseo
-    url: https://aliseo.inhire.app/beyond/vagas
     type: inhire
 
   - name: indicium
@@ -371,14 +294,6 @@ domains:
 
   - name: alliage
     url: https://alliage.inhire.app/vagas
-    type: inhire
-
-  - name: wavin
-    url: https://wavin.inhire.app/vagas
-    type: inhire
-
-  - name: amcom
-    url: https://amcom.inhire.app/vagas
     type: inhire
 
   - name: amicci
@@ -421,10 +336,6 @@ domains:
     url: https://bilheteriadigital.inhire.app/vagas
     type: inhire
 
-  - name: bionexo
-    url: https://bionexo.inhire.app/latam/vagas
-    type: inhire
-
   - name: bioxxi
     url: https://bioxxi.inhire.app/vagas
     type: inhire
@@ -435,10 +346,6 @@ domains:
 
   - name: bradesco
     url: https://bradesco.inhire.app/vagas
-    type: inhire
-
-  - name: brasilparalelo
-    url: https://brasilparalelo.inhire.app/vagas
     type: inhire
 
   - name: bridgeholding
@@ -489,14 +396,6 @@ domains:
     url: https://dnaconnect.inhire.app/dna-talent-basic/vagas
     type: inhire
 
-  - name: grupomedeiros
-    url: https://grupomedeiros.inhire.app/dunloc/vagas
-    type: inhire
-
-  - name: extremegroup
-    url: https://extremegroup.inhire.app/vagas
-    type: inhire
-
   - name: educbank
     url: https://educbank.inhire.app/educbank/vagas
     type: inhire
@@ -511,10 +410,6 @@ domains:
 
   - name: elevahub
     url: https://elevahub.inhire.app/vagas
-    type: inhire
-
-  - name: essencialnutricao
-    url: https://essencialnutricao.inhire.app/vagas
     type: inhire
 
   - name: exa
@@ -547,10 +442,6 @@ domains:
 
   - name: grupolos
     url: https://grupolos.inhire.app/vagas
-    type: inhire
-
-  - name: toroinvestimentos
-    url: https://toroinvestimentos.inhire.app/grupotoro/vagas
     type: inhire
 
   - name: gx2
@@ -661,16 +552,8 @@ domains:
     url: https://movecta.inhire.app/vagas
     type: inhire
 
-  - name: neoway
-    url: https://neoway.inhire.app/vagas
-    type: inhire
-
   - name: paytcall
     url: https://paytcall.inhire.app/vagas
-    type: inhire
-
-  - name: pedraagroindustrial
-    url: https://pedraagroindustrial.inhire.app/vagas
     type: inhire
 
   - name: peopleoriented
@@ -705,10 +588,6 @@ domains:
     url: https://same-engenharia.inhire.app/vagas
     type: inhire
 
-  - name: sanar
-    url: https://sanar.inhire.app/vagas
-    type: inhire
-
   - name: segurossura
     url: https://segurossura.inhire.app/vagas
     type: inhire
@@ -729,14 +608,6 @@ domains:
     url: https://solutis.inhire.app/vagas
     type: inhire
 
-  - name: grupomedeiros
-    url: https://grupomedeiros.inhire.app/supergiro/vagas
-    type: inhire
-
-  - name: superlogica
-    url: https://superlogica.inhire.app/vagas
-    type: inhire
-
   - name: grupotaking
     url: https://grupotaking.inhire.app/vagas
     type: inhire
@@ -747,10 +618,6 @@ domains:
 
   - name: techlead
     url: https://techlead.inhire.app/vagas
-    type: inhire
-
-  - name: toroinvestimentos
-    url: https://toroinvestimentos.inhire.app/vagas
     type: inhire
 
   - name: vixtra
@@ -849,10 +716,6 @@ domains:
     url: https://cedrotech.vagas.solides.com.br
     type: solides
 
-  - name: frameworkdigital-rethink
-    url: https://frameworkdigital.inhire.app/rethinkbyframework/vagas
-    type: inhire
-
   - name: besidemedia
     url: https://besidemedia.vagas.solides.com.br
     type: solides
@@ -883,10 +746,6 @@ domains:
 
   - name: turbi
     url: https://turbi.inhire.app/vagas
-    type: inhire
-
-  - name: seazone
-    url: https://seazone.inhire.app/vagas
     type: inhire
 
   - name: aggrandize
@@ -924,10 +783,6 @@ domains:
   - name: greenn
     url: https://greenn.vagas.solides.com.br
     type: solides
-
-  - name: radix
-    url: https://radix.inhire.app/vagas
-    type: inhire
 
   - name: kraken
     url: https://jobs.ashbyhq.com/kraken.com
