@@ -28,6 +28,10 @@ domains:
     url: https://jobs.lever.co/appen
     type: lever
 
+  - name: bluelightconsulting
+    url: https://jobs.lever.co/bluelightconsulting
+    type: lever
+
   - name: trust-wallet
     url: https://jobs.ashbyhq.com/trust-wallet
     type: ashbyhq
@@ -64,6 +68,10 @@ domains:
   - name: teclat
     url: https://teclat.inhire.app/vagas
     type: inhire
+
+  - name: atlantico
+    url: https://atlantico.inhire.app/vagas
+    type: inhire  
 
   - name: digix
     url: https://digix.inhire.app/vagas
@@ -777,6 +785,14 @@ domains:
     url: https://anagaming.inhire.app/vagas
     type: inhire
 
+  - name: musa
+    url: https://musa.inhire.app/vagas
+    type: inhire
+
   - name: quintoandar
     url: https://job-boards.greenhouse.io/quintoandar
     type: greenhouse
+
+  - name: accenture
+    url: https://accenture.wd3.myworkdayjobs.com/AccentureCareers
+    type: workday
