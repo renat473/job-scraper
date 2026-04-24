@@ -419,6 +419,94 @@ def scrape_inhire(domain: dict, fetch_description: bool = True) -> list[Job]:
     return jobs
 
 
+def scrape_workday(domain: dict, fetch_description: bool = True) -> list[Job]:
+    base_url = domain["url"].rstrip("/")
+    company = domain["name"]
+    # base_url formato: https://<company>.wd<n>.myworkdayjobs.com/<site>
+    host = base_url.split("//")[1]  # ex: accenture.wd3.myworkdayjobs.com/AccentureCareers
+    subdomain = host.split(".")[0]  # ex: accenture
+    wd_instance = host.split(".")[1]  # ex: wd3
+    site = host.split("/", 1)[1] if "/" in host else ""  # ex: AccentureCareers
+
+    api_url = f"https://{subdomain}.{wd_instance}.myworkdayjobs.com/wday/cxs/{subdomain}/{site}/jobs"
+
+    session = requests.Session()
+    session.headers.update({
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+        "Content-Type": "application/json",
+        "Referer": f"{base_url}/",
+        "Origin": f"https://{subdomain}.{wd_instance}.myworkdayjobs.com",
+    })
+
+    # Estabelece cookies de sessão antes de chamar a API
+    try:
+        session.get(base_url, timeout=15)
+    except Exception:
+        pass
+
+    jobs = []
+    limit = 20
+    offset = 0
+
+    while True:
+        payload = {"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""}
+        try:
+            r = session.post(api_url, json=payload, timeout=15)
+            r.raise_for_status()
+            data = r.json()
+        except Exception as e:
+            print(f"[ERROR] Workday API falhou para {company}: {e}")
+            if hasattr(e, "response") and e.response is not None:
+                print(f"[ERROR] Resposta: {e.response.text[:300]}")
+            break
+
+        postings = data.get("jobPostings", [])
+        if not postings:
+            break
+
+        for posting in postings:
+            title = posting.get("title", "").strip()
+            if not title:
+                continue
+
+            location = posting.get("locationsText", "")
+            external_path = posting.get("externalPath", "")
+            job_url = f"https://{subdomain}.{wd_instance}.myworkdayjobs.com{external_path}" if external_path else ""
+
+            description = ""
+            if fetch_description and job_url:
+                print(f"  [→] Carregando descrição: {title}")
+                try:
+                    detail_api = f"https://{subdomain}.{wd_instance}.myworkdayjobs.com/wday/cxs/{subdomain}/{site}{external_path}"
+                    r2 = session.get(detail_api, timeout=15)
+                    r2.raise_for_status()
+                    detail = r2.json()
+                    desc_html = detail.get("jobPostingInfo", {}).get("jobDescription", "")
+                    description = _html_to_text(desc_html) if desc_html else ""
+                except Exception as e:
+                    description = f"[Erro ao carregar descrição: {e}]"
+                time.sleep(0.5)
+
+            jobs.append(Job(
+                title=title,
+                location=location,
+                department="",
+                url=job_url,
+                company=company,
+                description=description,
+            ))
+
+        total = data.get("total", 0)
+        offset += limit
+        if offset >= total:
+            break
+        time.sleep(1)
+
+    return jobs
+
+
 def scrape_greenhouse(domain: dict, fetch_description: bool = True) -> list[Job]:
     url = domain["url"]
     company = domain["name"]
@@ -474,6 +562,7 @@ SCRAPERS = {
     "lever": scrape_lever,
     "inhire": scrape_inhire,
     "greenhouse": scrape_greenhouse,
+    "workday": scrape_workday,
 }
 
 
