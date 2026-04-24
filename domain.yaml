@@ -28,6 +28,10 @@ domains:
     url: https://jobs.lever.co/appen
     type: lever
 
+  - name: shakacode
+    url: https://jobs.lever.co/shakacode
+    type: lever
+
   - name: bluelightconsulting
     url: https://jobs.lever.co/bluelightconsulting
     type: lever
@@ -67,6 +71,10 @@ domains:
 
   - name: teclat
     url: https://teclat.inhire.app/vagas
+    type: inhire
+
+  - name: cobli
+    url: https://cobli.inhire.app/vagas
     type: inhire
 
   - name: atlantico
@@ -781,6 +789,10 @@ domains:
     url: https://zig.inhire.app/vagas
     type: inhire
 
+  - name: brq
+    url: https://brq.inhire.app/vagas
+    type: inhire
+
   - name: anagaming
     url: https://anagaming.inhire.app/vagas
     type: inhire
@@ -793,6 +805,138 @@ domains:
     url: https://job-boards.greenhouse.io/quintoandar
     type: greenhouse
 
+  - name: exadelinc
+    url: https://job-boards.greenhouse.io/exadelinc
+    type: greenhouse
+
+  - name: arcoeducacao
+    url: https://job-boards.greenhouse.io/arcoeducacao
+    type: greenhouse
+
+  - name: artefactlinkedin
+    url: https://job-boards.greenhouse.io/artefactlinkedin
+    type: greenhouse
+
+  - name: stone
+    url: https://job-boards.greenhouse.io/stone
+    type: greenhouse
+
   - name: accenture
     url: https://accenture.wd3.myworkdayjobs.com/AccentureCareers
     type: workday
+
+  - name: cakto
+    url: https://cakto.vagas.solides.com.br
+    type: solides
+
+  - name: alloy
+    url: https://alloy.vagas.solides.com.br
+    type: solides
+
+  - name: gobots
+    url: https://gobots.vagas.solides.com.br
+    type: solides
+
+  - name: trabalhecomacontmatic
+    url: https://trabalhecomacontmatic.vagas.solides.com.br
+    type: solides
+
+  - name: buzzmonitor
+    url: https://buzzmonitor.vagas.solides.com.br
+    type: solides
+
+  - name: cedrotech
+    url: https://cedrotech.vagas.solides.com.br
+    type: solides
+
+  - name: frameworkdigital-rethink
+    url: https://frameworkdigital.inhire.app/rethinkbyframework/vagas
+    type: inhire
+
+  - name: besidemedia
+    url: https://besidemedia.vagas.solides.com.br
+    type: solides
+
+  - name: vaas
+    url: https://vaas.inhire.app/vagas
+    type: inhire
+
+  - name: elifegroup
+    url: https://elifegroup.vagas.solides.com.br
+    type: solides
+
+  - name: agenciamestre
+    url: https://agenciamestre.vagas.solides.com.br
+    type: solides
+
+  - name: npdigitalbrasil
+    url: https://npdigitalbrasil.vagas.solides.com.br
+    type: solides
+
+  - name: robbu
+    url: https://robbu.vagas.solides.com.br
+    type: solides
+
+  - name: odontobiz
+    url: https://odontobiz.vagas.solides.com.br
+    type: solides
+
+  - name: turbi
+    url: https://turbi.inhire.app/vagas
+    type: inhire
+
+  - name: seazone
+    url: https://seazone.inhire.app/vagas
+    type: inhire
+
+  - name: aggrandize
+    url: https://aggrandize.vagas.solides.com.br
+    type: solides
+
+  - name: rootsgestao
+    url: https://rootsgestao.vagas.solides.com.br
+    type: solides
+
+  - name: rankmyapp
+    url: https://rankmyapp.inhire.app/vagas
+    type: inhire
+
+  - name: ilia
+    url: https://job-boards.greenhouse.io/ilia
+    type: greenhouse
+
+  - name: starkmarketing
+    url: https://starkmarketing.vagas.solides.com.br
+    type: solides
+
+  - name: greenrh
+    url: https://greenrh.vagas.solides.com.br
+    type: solides
+
+  - name: uappicarreiras
+    url: https://uappicarreiras.vagas.solides.com.br
+    type: solides
+
+  - name: nkan
+    url: https://nkan.vagas.solides.com.br
+    type: solides
+
+  - name: greenn
+    url: https://greenn.vagas.solides.com.br
+    type: solides
+
+  - name: radix
+    url: https://radix.inhire.app/vagas
+    type: inhire
+
+  - name: kraken
+    url: https://jobs.ashbyhq.com/kraken.com
+    type: ashbyhq
+
+  - name: smartenvios
+    url: https://smartenvios.vagas.solides.com.br
+    type: solides
+
+  - name: clickcannabis
+    url: https://clickcannabis.vagas.solides.com.br
+    type: solides
