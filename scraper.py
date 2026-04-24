@@ -556,6 +556,77 @@ def scrape_greenhouse(domain: dict, fetch_description: bool = True) -> list[Job]
     return jobs
 
 
+def scrape_solides(domain: dict, fetch_description: bool = True) -> list[Job]:
+    url = domain["url"]
+    company = domain["name"]
+    slug = url.rstrip("/").split("//")[1].split(".")[0]
+    base_url = url.rstrip("/")
+
+    api_base = "https://apigw.solides.com.br/jobs/v3"
+    headers = {
+        "Origin": base_url,
+        "Referer": base_url + "/",
+    }
+    jobs = []
+
+    session = requests.Session()
+    page = 1
+    total_pages = 1
+
+    while page <= total_pages:
+        params = {"take": 12, "slug": slug, "page": page}
+        r = session.get(f"{api_base}/home/vacancy", params=params, headers=headers, timeout=15)
+        r.raise_for_status()
+        payload = r.json().get("data", {})
+
+        total_pages = payload.get("totalPages", 1)
+        postings = payload.get("data", [])
+
+        for posting in postings:
+            title = posting.get("title", "").strip()
+            if not title:
+                continue
+
+            job_id = posting.get("id", "")
+            job_url = f"{base_url}/vaga/{job_id}"
+
+            city = (posting.get("city") or {}).get("name", "")
+            state = (posting.get("state") or {}).get("code", "")
+            location_parts = [p for p in [city, state] if p]
+            location_str = "/".join(location_parts)
+            job_type = posting.get("jobType") or ""
+            if job_type and location_str:
+                location = f"{job_type} — {location_str}"
+            elif job_type:
+                location = job_type
+            else:
+                location = location_str
+
+            areas = posting.get("occupationAreas") or []
+            department = areas[0].get("name", "") if areas else ""
+
+            description = ""
+            if fetch_description:
+                print(f"  [→] Carregando descrição: {title}")
+                desc_html = posting.get("description", "")
+                description = _html_to_text(desc_html) if desc_html else ""
+
+            jobs.append(Job(
+                title=title,
+                location=location,
+                department=department,
+                url=job_url,
+                company=company,
+                description=description,
+            ))
+
+        page += 1
+        if page <= total_pages:
+            time.sleep(1)
+
+    return jobs
+
+
 SCRAPERS = {
     "rippling": scrape_rippling,
     "ashbyhq": scrape_ashbyhq,
@@ -563,6 +634,7 @@ SCRAPERS = {
     "inhire": scrape_inhire,
     "greenhouse": scrape_greenhouse,
     "workday": scrape_workday,
+    "solides": scrape_solides,
 }
 
 
